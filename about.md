@@ -4,8 +4,6 @@ title: 소개
 permalink: /about/
 ---
 
-<div class="about-page">
-
 # 안녕하세요 👋
 
 저는 **개발과 글쓰기**를 사랑하는 사람입니다.
@@ -40,5 +38,3 @@ permalink: /about/
 - **GitHub**: [{{ site.github_username }}](https://github.com/{{ site.github_username }})
 
 함께 배우고 성장하는 것을 환영합니다. 🌱
-
-</div>
