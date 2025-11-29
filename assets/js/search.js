@@ -15,26 +15,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchResults = document.getElementById('search-results');
     const mainContent = document.getElementById('main-content');
 
-    // 모든 포스트 데이터 수집
-    let posts = [];
-    
-    // Jekyll에서 JSON 데이터 생성 (실제로는 search.json 파일 필요)
-    // 임시로 DOM에서 포스트 수집
-    function collectPosts() {
-        const postElements = document.querySelectorAll('.post');
-        posts = Array.from(postElements).map(post => {
-            const titleElement = post.querySelector('.post-title a');
-            const excerptElement = post.querySelector('.post-excerpt');
-            const metaElement = post.querySelector('.post-meta');
-            
-            return {
-                title: titleElement ? titleElement.textContent : '',
-                url: titleElement ? titleElement.getAttribute('href') : '',
-                excerpt: excerptElement ? excerptElement.textContent : '',
-                date: metaElement ? metaElement.textContent : ''
-            };
-        });
+    let postsData = [];
+    let isDataLoaded = false;
+
+    // search.json에서 포스트 데이터 로드
+    async function loadPostsData() {
+        if (isDataLoaded) return;
+        
+        try {
+            const response = await fetch('/search.json');
+            postsData = await response.json();
+            isDataLoaded = true;
+        } catch (error) {
+            console.error('검색 데이터 로드 실패:', error);
+        }
     }
+
+    // 페이지 로드 시 데이터 미리 로드
+    loadPostsData();
 
     function performSearch(query) {
         if (!query.trim()) {
@@ -43,11 +41,28 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        collectPosts();
-        
-        const results = posts.filter(post => {
-            const searchText = (post.title + ' ' + post.excerpt).toLowerCase();
-            return searchText.includes(query.toLowerCase());
+        if (!isDataLoaded) {
+            searchResults.innerHTML = `
+                <div class="post" style="text-align: center; padding: 2rem;">
+                    <p>검색 데이터를 불러오는 중...</p>
+                </div>
+            `;
+            searchResults.style.display = 'block';
+            mainContent.style.display = 'none';
+            
+            loadPostsData().then(() => {
+                performSearch(query);
+            });
+            return;
+        }
+
+        const queryLower = query.toLowerCase();
+        const results = postsData.filter(post => {
+            const titleMatch = post.title.toLowerCase().includes(queryLower);
+            const contentMatch = post.content.toLowerCase().includes(queryLower);
+            const tagsMatch = post.tags.some(tag => tag.toLowerCase().includes(queryLower));
+            
+            return titleMatch || contentMatch || tagsMatch;
         });
 
         displayResults(results, query);
@@ -56,29 +71,68 @@ document.addEventListener('DOMContentLoaded', function() {
     function displayResults(results, query) {
         if (results.length === 0) {
             searchResults.innerHTML = `
+                <div class="search-header">
+                    <h2>검색 결과</h2>
+                    <button id="close-search" class="close-search-btn">✕</button>
+                </div>
                 <div class="post" style="text-align: center; padding: 3rem;">
-                    <h2>검색 결과 없음</h2>
-                    <p>"${query}"에 대한 결과를 찾을 수 없습니다.</p>
+                    <h3 style="margin-bottom: 1rem;">검색 결과 없음</h3>
+                    <p>"${escapeHtml(query)}"에 대한 결과를 찾을 수 없습니다.</p>
                 </div>
             `;
         } else {
-            let html = `<h2>검색 결과 (${results.length}개)</h2>`;
+            let html = `
+                <div class="search-header">
+                    <h2>검색 결과 (${results.length}개)</h2>
+                    <button id="close-search" class="close-search-btn">✕</button>
+                </div>
+            `;
+            
             results.forEach(post => {
+                // 검색어 하이라이트
+                const highlightedTitle = highlightText(post.title, query);
+                const highlightedExcerpt = highlightText(post.excerpt, query);
+                
                 html += `
                     <article class="post search-result-item">
-                        <a href="${post.url}">
-                            <h3>${post.title}</h3>
-                            <div class="post-meta">${post.date}</div>
-                            <p class="post-excerpt">${post.excerpt}</p>
-                        </a>
+                        <h3 class="post-title">
+                            <a href="${post.url}">${highlightedTitle}</a>
+                        </h3>
+                        <div class="post-meta">${post.date}</div>
+                        <p class="post-excerpt">${highlightedExcerpt}</p>
+                        <a href="${post.url}" class="read-more">더 읽기 →</a>
                     </article>
                 `;
             });
             searchResults.innerHTML = html;
+            
+            // 닫기 버튼 이벤트
+            document.getElementById('close-search').addEventListener('click', closeSearch);
         }
 
         searchResults.style.display = 'block';
         mainContent.style.display = 'none';
+    }
+
+    function highlightText(text, query) {
+        const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
+        return escapeHtml(text).replace(regex, '<mark>$1</mark>');
+    }
+
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    function escapeRegex(string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    function closeSearch() {
+        searchResults.style.display = 'none';
+        mainContent.style.display = 'block';
+        searchInput.value = '';
     }
 
     if (searchButton) {
@@ -96,11 +150,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // 검색어 초기화
-        searchInput.addEventListener('input', function() {
-            if (searchInput.value === '') {
-                searchResults.style.display = 'none';
-                mainContent.style.display = 'block';
+        // ESC 키로 검색 닫기
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeSearch();
             }
         });
     }

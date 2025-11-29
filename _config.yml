@@ -6,12 +6,21 @@ github_username: jakemraz
 
 # Build settings
 markdown: kramdown
-theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-paginate
+
+# Pagination
+paginate: 5
+paginate_path: "/page:num/"
 
 # Permalink 설정
 permalink: /:year/:month/:day/:title/
 
 # 타임존
 timezone: Asia/Seoul
+
+# Exclude
+exclude:
+  - Gemfile
+  - Gemfile.lock

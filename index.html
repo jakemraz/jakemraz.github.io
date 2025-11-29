@@ -4,7 +4,7 @@ title: 홈
 ---
 
 <div class="posts-list">
-{% for post in site.posts %}
+{% for post in paginator.posts %}
 <article class="post">
     <h2 class="post-title">
         <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
@@ -24,3 +24,36 @@ title: 홈
 </article>
 {% endfor %}
 </div>
+
+<!-- Pagination -->
+{% if paginator.total_pages > 1 %}
+<div class="pagination">
+    {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | relative_url }}" class="pagination-btn">
+        ← 이전
+    </a>
+    {% else %}
+    <span class="pagination-btn disabled">← 이전</span>
+    {% endif %}
+
+    <div class="pagination-numbers">
+        {% for page in (1..paginator.total_pages) %}
+            {% if page == paginator.page %}
+            <span class="pagination-number active">{{ page }}</span>
+            {% elsif page == 1 %}
+            <a href="{{ '/' | relative_url }}" class="pagination-number">{{ page }}</a>
+            {% else %}
+            <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}" class="pagination-number">{{ page }}</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | relative_url }}" class="pagination-btn">
+        다음 →
+    </a>
+    {% else %}
+    <span class="pagination-btn disabled">다음 →</span>
+    {% endif %}
+</div>
+{% endif %}

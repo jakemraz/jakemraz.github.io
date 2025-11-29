@@ -1,0 +1,53 @@
+---
+layout: default
+title: 프로젝트
+permalink: /projects/
+---
+
+<div class="projects-page">
+    <h1>프로젝트</h1>
+    <p class="page-description">진행 중인 프로젝트와 글들을 모아놓은 공간입니다.</p>
+
+    <!-- 2026년 프로젝트 -->
+    <section class="project-year">
+        <h2 class="year-title">2026년</h2>       
+        <div class="project-section">
+            <h3 class="project-title">🚀 새로운 프로젝트</h3>
+            <p class="project-description">2026년 프로젝트 설명</p>            
+            <div class="project-posts">
+                준비 중...
+            </div>
+        </div>
+    </section>
+
+    <!-- 2025년 프로젝트 -->
+    <section class="project-year">
+        <h2 class="year-title">2025년</h2>
+        
+        <div class="project-section">
+            <h3 class="project-title">📚 책쓰기</h3>
+            <p class="project-description">나만의 책을 완성하는 여정을 기록합니다.</p>
+            
+            <div class="project-posts">
+                {% assign book_posts = site.posts | where_exp: "post", "post.tags contains '책쓰기'" %}
+                {% if book_posts.size > 0 %}
+                    {% for post in book_posts %}
+                    <article class="project-post-item">
+                        <a href="{{ post.url | relative_url }}">
+                            <div class="project-post-content">
+                                <h4>{{ post.title }}</h4>
+                                <p class="post-excerpt-small">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+                            </div>
+                            <span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+                        </a>
+                    </article>
+                    {% endfor %}
+                {% else %}
+                    <div class="no-posts">
+                        <p>아직 작성된 글이 없습니다. 첫 글을 작성해보세요! ✍️</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+</div>
