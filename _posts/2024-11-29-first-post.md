@@ -2,7 +2,7 @@
 layout: post
 title: "GitHub Pages로 블로그 시작하기"
 date: 2024-11-29
-tags: [GitHub, 웹개발, 블로그]
+tags: [GitHub,웹개발,블로그,책쓰기]
 author: 당신의 이름
 ---
 
