@@ -1,0 +1,33 @@
+---
+layout: default
+title: 태그
+---
+
+<div class="tags-page">
+    <h1>태그별 글 모음</h1>
+    
+    <div class="tag-cloud">
+        {% assign tags = site.tags | sort %}
+        {% for tag in tags %}
+        <a href="#{{ tag[0] | slugify }}" class="tag-cloud-item">
+            {{ tag[0] }} <span class="tag-count">({{ tag[1].size }})</span>
+        </a>
+        {% endfor %}
+    </div>
+
+    {% for tag in tags %}
+    <section class="tag-section" id="{{ tag[0] | slugify }}">
+        <h2>{{ tag[0] }}</h2>
+        <div class="tag-posts">
+            {% for post in tag[1] %}
+            <article class="tag-post-item">
+                <a href="{{ post.url | relative_url }}">
+                    <h3>{{ post.title }}</h3>
+                    <span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+                </a>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+    {% endfor %}
+</div>

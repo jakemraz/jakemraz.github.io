@@ -1,0 +1,36 @@
+---
+layout: default
+---
+<article class="post-full">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="post-meta">
+        {{ page.date | date: "%Y년 %m월 %d일" }}
+        {% if page.author %} · {{ page.author }}{% endif %}
+    </div>
+    
+    {% if page.tags %}
+    <div class="tags">
+        {% for tag in page.tags %}
+        <a href="{{ '/tags' | relative_url }}#{{ tag | slugify }}" class="tag">{{ tag }}</a>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="post-content">
+        {{ content }}
+    </div>
+    
+    <div class="post-navigation">
+        {% if page.previous.url %}
+        <a href="{{ page.previous.url | relative_url }}" class="prev-post">
+            ← {{ page.previous.title }}
+        </a>
+        {% endif %}
+        
+        {% if page.next.url %}
+        <a href="{{ page.next.url | relative_url }}" class="next-post">
+            {{ page.next.title }} →
+        </a>
+        {% endif %}
+    </div>
+</article>

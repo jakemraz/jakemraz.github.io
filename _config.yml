@@ -1,0 +1,17 @@
+title: Jakemraz
+description: Blog
+author: Jakemraz
+email: jakemraz100@gmail.com
+github_username: jakemraz
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+
+# Permalink 설정
+permalink: /:year/:month/:day/:title/
+
+# 타임존
+timezone: Asia/Seoul
