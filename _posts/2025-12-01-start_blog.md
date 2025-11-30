@@ -4,6 +4,7 @@ title: "블로그를 시작합니다"
 date: 2025-12-01
 tags: [2025/30일안에_AI투자봇_만들기]
 author: Jakemraz
+image: /assets/posts/nof1.png
 ---
 블로그를 오픈합니다.
 
@@ -12,7 +13,7 @@ author: Jakemraz
 
 그 중, 요즘 핫한 AI 바이브 코딩 관련해서 챌린지를 해보면 좋겠다 싶었고, 그냥 혼자 하는 것 보다는 SELF ETA를 정하는 동시에 `ADD`(ARTICAL-DRIVEN DEVELOPMENT)로 진행 하는 것이 좀 더 동기부여가 될 것 같아 그 과정을 담아 보고자 블로그를 개설하게 되었습니다.
 
-![잡지 드리븐 디벨롭먼트(?)](2025-12-01-start_blog/add.gif)
+![잡지 드리븐 디벨롭먼트(?)](/assets/posts/2025-12-01-start_blog/add.gif)
 
 이 블로그는 디자인 부터 코딩까지 순수하게 Claude를 통해 만들어 졌는데요,
 앞으로의 블로그 관련 변경 사항도 가능하다면 모두 Claude를 통할 계획입니다.
@@ -31,7 +32,7 @@ author: Jakemraz
 
 이에 레퍼런스가 되는 사이트는 [nof1.ai](http://nof1.ai) 입니다.
 
-![nof1.png](2025-12-01-start_blog/nof1.png)
+![nof1.png](/assets/posts/2025-12-01-start_blog/nof1.png)
 
 종목을 무엇으로 할지ㅡ코인, 주식ㅡ, 전략은 어떤 것을 쓸지ㅡ가치 평가, 차트 등ㅡ 아직 정해야 할 것들이 많지만 우선은 움직여볼 생각입니다.
 
