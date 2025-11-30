@@ -1,14 +1,17 @@
 title: Jakemraz
-description: Blog
+description: 엔지니어 Jakemraz의 기술 블로그
 author: Jakemraz
 email: jakemraz100@gmail.com
 github_username: jakemraz
+url: "https://jakemraz.github.io"
 
 # Build settings
 markdown: kramdown
 plugins:
   - jekyll-feed
   - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-seo-tag
 
 # Pagination
 paginate: 5
@@ -25,6 +28,13 @@ utterances:
 
 # 타임존
 timezone: Asia/Seoul
+
+# SEO 설정
+lang: ko_KR
+social:
+  name: Jakemraz
+  links:
+    - https://github.com/jakemraz
 
 # Exclude
 exclude:

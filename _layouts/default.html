@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }} - {{ site.title }}</title>
+    
+    {% seo %}
+    
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
 </head>
 <body>
     <header>
@@ -51,7 +54,8 @@
             <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title }}. All rights reserved.</p>
             <p>
                 <a href="https://github.com/{{ site.github_username }}">GitHub</a> · 
-                <a href="mailto:{{ site.email }}">Email</a>
+                <a href="mailto:{{ site.email }}">Email</a> · 
+                <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
             </p>
         </div>
     </footer>
