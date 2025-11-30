@@ -11,7 +11,7 @@ image: /assets/posts/2025-12-01-start_blog/nof1.png
 최근 `50일안에 AI공부해서 시부야 전광판에 작업물 올리기`라는 제목으로 챌린지 중인 Instagram([@namahjin_](https://www.instagram.com/namahjin_/))을 발견했습니다.
 이에 자극을 받아 저도 무언가 해야겠다는 생각이 들었습니다.
 
-그 중, 요즘 핫한 AI 바이브 코딩 관련해서 챌린지를 해보면 좋겠다 싶었고, 그냥 혼자 하는 것 보다는 SELF ETA를 정하는 동시에 `ADD`(ARTICAL-DRIVEN DEVELOPMENT)로 진행 하는 것이 좀 더 동기부여가 될 것 같아 그 과정을 담아 보고자 블로그를 개설하게 되었습니다.
+그 중, 요즘 핫한 AI 바이브 코딩 관련해서 챌린지를 해보면 좋겠다 싶었고, 그냥 혼자 하는 것 보다는 SELF ETA를 정하는 동시에 `SDD`(SOCIAL-DRIVEN DEVELOPMENT)로 진행 하는 것이 좀 더 동기부여가 될 것 같아 그 과정을 담아 보고자 블로그를 개설하게 되었습니다.
 
 ![잡지 드리븐 디벨롭먼트(?)](/assets/posts/2025-12-01-start_blog/add.gif)
 
