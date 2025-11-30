@@ -6,8 +6,6 @@ tags: [2025/30일안에_AI투자봇_만들기]
 author: Jakemraz
 image: /assets/posts/2025-12-01-start_blog/nof1.png
 ---
-블로그를 오픈합니다.
-
 최근 `50일안에 AI공부해서 시부야 전광판에 작업물 올리기`라는 제목으로 챌린지 중인 Instagram([@namahjin_](https://www.instagram.com/namahjin_/))을 발견했습니다.
 이에 자극을 받아 저도 무언가 해야겠다는 생각이 들었습니다.
 

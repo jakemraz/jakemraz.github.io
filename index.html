@@ -6,21 +6,31 @@ title: 홈
 <div class="posts-list">
 {% for post in paginator.posts %}
 <article class="post">
-    <h2 class="post-title">
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-    </h2>
-    <div class="post-meta">{{ post.date | date: "%Y년 %m월 %d일" }}</div>
-    <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 50 }}</p>
+    <div class="post-text">
+        <h2 class="post-title">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </h2>
+        <div class="post-meta">{{ post.date | date: "%Y년 %m월 %d일" }}</div>
+        <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 50 }}</p>
+        
+        {% if post.tags %}
+        <div class="tags">
+            {% for tag in post.tags %}
+            <a href="{{ '/tags' | relative_url }}#{{ tag | slugify }}" class="tag">{{ tag }}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        <a href="{{ post.url | relative_url }}" class="read-more">더 읽기 →</a>
+    </div>
     
-    {% if post.tags %}
-    <div class="tags">
-        {% for tag in post.tags %}
-        <a href="{{ '/tags' | relative_url }}#{{ tag | slugify }}" class="tag">{{ tag }}</a>
-        {% endfor %}
+    {% if post.image %}
+    <div class="post-thumbnail">
+        <a href="{{ post.url | relative_url }}">
+            <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+        </a>
     </div>
     {% endif %}
-    
-    <a href="{{ post.url | relative_url }}" class="read-more">더 읽기 →</a>
 </article>
 {% endfor %}
 </div>
