@@ -20,6 +20,20 @@ layout: default
         {{ content }}
     </div>
     
+    <!-- Utterances 댓글 -->
+    {% if site.utterances.repo %}
+    <div class="comments">
+        <h3>댓글</h3>
+        <script src="https://utteranc.es/client.js"
+                repo="{{ site.utterances.repo }}"
+                issue-term="{{ site.utterances.issue_term | default: 'pathname' }}"
+                theme="{{ site.utterances.theme | default: 'github-light' }}"
+                crossorigin="anonymous"
+                async>
+        </script>
+    </div>
+    {% endif %}
+    
     <div class="post-navigation">
         {% if page.previous.url %}
         <a href="{{ page.previous.url | relative_url }}" class="prev-post">
