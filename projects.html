@@ -10,7 +10,7 @@ permalink: /projects/
 
     <!-- 2026년 프로젝트 -->
     <section class="project-year">
-        <h2 class="year-title">2026년</h2>       
+        <h2 class="year-title">2026년</h2>
         <div class="project-section">
             <h3 class="project-title">🚀 새로운 프로젝트</h3>
             <p class="project-description">2026년 프로젝트 설명</p>            
@@ -25,11 +25,11 @@ permalink: /projects/
         <h2 class="year-title">2025년</h2>
         
         <div class="project-section">
-            <h3 class="project-title">📚 책쓰기</h3>
-            <p class="project-description">나만의 책을 완성하는 여정을 기록합니다.</p>
+            <h3 class="project-title">🤖 30일 안에 AI 투자봇 만들기</h3>
+            <p class="project-description">AI 기반으로 투자하는 봇을 만듭니다</p>
             
             <div class="project-posts">
-                {% assign book_posts = site.posts | where_exp: "post", "post.tags contains '책쓰기'" %}
+                {% assign book_posts = site.posts | where_exp: "post", "post.tags contains '2025/30일안에_AI투자봇_만들기'" %}
                 {% if book_posts.size > 0 %}
                     {% for post in book_posts %}
                     <article class="project-post-item">
