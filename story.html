@@ -4,14 +4,11 @@ title: 이야기
 ---
 
 <div class="projects-page">
-    <h1>이야기</h1>
-    <p class="page-description">'이야기' 태그가 붙은 글들을 모아놓은 공간입니다.</p>
+    <h1>📖 이야기</h1>
+    <p class="page-description">다양한 이야기들을 모아놓은 공간입니다.</p>
 
     <section class="project-year">
         <div class="project-section">
-            <h3 class="project-title">📖 이야기</h3>
-            <p class="project-description">다양한 이야기들이 담긴 글들</p>
-            
             <div class="project-posts">
                 {% assign story_posts = site.posts | where_exp: "post", "post.tags contains '이야기'" %}
                 {% if story_posts.size > 0 %}
