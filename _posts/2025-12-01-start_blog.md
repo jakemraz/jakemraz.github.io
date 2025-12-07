@@ -2,7 +2,7 @@
 layout: post
 title: "블로그를 시작합니다"
 date: 2025-12-01
-tags: [2025/30일안에_AI투자봇_만들기]
+tags: [이야기,2025/30일안에_AI투자봇_만들기]
 author: Jakemraz
 image: /assets/posts/2025-12-01-start_blog/nof1.png
 ---
