@@ -1,0 +1,27 @@
+---
+layout: default
+title: 이야기
+---
+
+<div class="tags-page">
+    <h1>이야기</h1>
+    
+    {% assign story_posts = site.tags.이야기 %}
+    {% if story_posts %}
+        <div class="tag-posts">
+            {% for post in story_posts %}
+            <article class="tag-post-item">
+                <a href="{{ post.url | relative_url }}">
+                    <h3>{{ post.title }}</h3>
+                    <span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+                </a>
+            </article>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="no-posts">
+            <p>아직 '이야기' 태그가 붙은 글이 없습니다.</p>
+            <p>곧 흥미로운 이야기들이 추가될 예정입니다.</p>
+        </div>
+    {% endif %}
+</div>
